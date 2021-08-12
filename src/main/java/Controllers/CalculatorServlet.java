@@ -1,7 +1,7 @@
 package Controllers;
 
-import Services.Services;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,41 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class CalculatorServlet {
-    Services services = new Services();
-    @RequestMapping("/")
-    public String Calculator(){
-        return "/index.jsp";
-    }
-    @RequestMapping("/add")
-    public String add(HttpServletRequest request){
-        double value1 = Double.parseDouble(request.getParameter("value1"));
-        double value2 = Double.parseDouble(request.getParameter("value2"));
-        double result = services.add(value1, value2);
-        request.setAttribute("result", result);
-        return "/index.jsp";
-    }
-    @RequestMapping("/minus")
-    public String minus(HttpServletRequest request){
-        double value1 = Double.parseDouble(request.getParameter("value1"));
-        double value2 = Double.parseDouble(request.getParameter("value2"));
-        double result = services.minus(value1, value2);
-        request.setAttribute("result", result);
-        return "/index.jsp";
-    }
-    @RequestMapping("/multiplication")
-    public String multiplication(HttpServletRequest request){
-        double value1 = Double.parseDouble(request.getParameter("value1"));
-        double value2 = Double.parseDouble(request.getParameter("value2"));
-        double result = services.multiplication(value1, value2);
-        request.setAttribute("result", result);
-        return "/index.jsp";
-    }
-    @RequestMapping("/division")
-    public String division(HttpServletRequest request){
-        double value1 = Double.parseDouble(request.getParameter("value1"));
-        double value2 = Double.parseDouble(request.getParameter("value2"));
-        double result = services.division(value1, value2);
-        request.setAttribute("result", result);
-        return "/index.jsp";
+
+    @RequestMapping("/create")
+    public String Calculator(@RequestParam double value1, @RequestParam double value2, @RequestParam String check, Model model){
+        double result = 0;
+        if(check.equals("+")){
+            result = value1 + value2;
+        }
+        if(check.equals("-")){
+            result = value1 - value2;
+        }
+        if(check.equals("*")){
+            result = value1 * value2;
+        }
+        if(check.equals("/")){
+            result = value1 / value2;
+        }
+        model.addAttribute("result", result);
+        return "index.jsp";
     }
 }

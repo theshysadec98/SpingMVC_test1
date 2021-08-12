@@ -11,28 +11,20 @@
     <title>$Title$</title>
   </head>
   <body>
-  <tr>
-    <td><input type="text" name="value1"></td>
-    <td><input type="text" name="value2"></td>
-  </tr>
+
+  <form action="/create">
     <table>
       <tr>
-        <td>
-          <form action="/add"><button type="submit">+</button></form>
-        </td>
-        <td>
-          <form action="/minus"><button type="submit" >-</button></form>
-        </td>
-        <td>
-          <form action="/multiplication"><button type="submit" n>*</button></form>
-        </td>
-        <td>
-          <form action="/division"><button type="submit">/</button></form>
-        </td>
+        <td><input type="text" name="value1"></td>
+        <td><input type="text" name="value2"></td>
+        <td><button type="submit" name="check" value="+">+</button></td>
+        <td><button type="submit" name="check" value="-">-</button></td>
+        <td><button type="submit" name="check" value="*">*</button></td>
+        <td><button type="submit" name="check" value="/">/</button></td>
       </tr>
     </table>
-
-  <h1>${result}</h1>
+    <h1>${result}</h1>
+  </form>
 
   </body>
 </html>
