@@ -56,10 +56,5 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         return new SimpleCustomerServiceImpl();
     }
 
-    @Override
-    // chỉ cho Spring biết chỗ lấy tài liệu tĩnh.(js,css,img)
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/i/**")
-                .addResourceLocations("C:\\Users\\HOANG\\Downloads\\sdsd\\framework_ORM\\src\\main\\webapp\\WEB-INF\\image\\");
-    }
+
 }
