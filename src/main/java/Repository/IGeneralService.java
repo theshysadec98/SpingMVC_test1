@@ -8,6 +8,6 @@ public interface IGeneralService<T> {
     T findById(Long id);
 
     void save(T t);
-
+    List<T> findByName(String firstName);
     void remove(Long id);
 }

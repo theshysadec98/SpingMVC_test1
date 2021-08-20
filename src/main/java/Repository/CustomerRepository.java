@@ -17,6 +17,18 @@ public class CustomerRepository implements ICustomerRepository{
     }
 
     @Override
+    public List<Customer> findByName(String firstName) {
+        TypedQuery<Customer> query = em.createQuery("select c from Customer c where c.firstName like concat('%',:firstName,'%') ", Customer.class);
+        query.setParameter("firstName", firstName);
+        try{
+            return query.getResultList();
+        }catch (NoResultException e){
+            return null;
+        }
+
+    }
+
+    @Override
     public Customer findById(Long id) {
         TypedQuery<Customer> query = em.createQuery("select c from Customer c where c.id =:id", Customer.class);
         query.setParameter("id", id);
@@ -44,4 +56,6 @@ public class CustomerRepository implements ICustomerRepository{
             em.remove(customer);
         }
     }
+
+
 }

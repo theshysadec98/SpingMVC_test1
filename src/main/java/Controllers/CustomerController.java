@@ -4,10 +4,7 @@ import Models.Customer;
 import Repository.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -78,5 +75,13 @@ public class CustomerController {
     public String deleteCustomer(@ModelAttribute("customer") Customer customer){
         customerService.remove(customer.getId());
         return "redirect:customers";
+    }
+
+    @PostMapping("/search-customer")
+    public ModelAndView search(@RequestParam String firstName){
+        List<Customer> customers = customerService.findByName(firstName);
+        ModelAndView modelAndView = new ModelAndView("/list");
+        modelAndView.addObject("customer", customers);
+        return modelAndView;
     }
 }

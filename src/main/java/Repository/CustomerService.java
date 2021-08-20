@@ -25,7 +25,13 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
+    public List<Customer> findByName(String firstName) {
+        return customerRepository.findByName(firstName);
+    }
+
+    @Override
     public void remove(Long id) {
         customerRepository.remove(id);
     }
+
 }

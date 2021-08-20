@@ -1,20 +1,20 @@
+Config/AppInit.java
+ Config.AppInit
+Models/Customer.java
+ Models.Customer
 Repository/CustomerService.java
  Repository.CustomerService
 Config/AppConfig.java
  Config.AppConfig
-Models/Customer.java
- Models.Customer
+Repository/IGeneralService.java
+ Repository.IGeneralService
 Repository/CustomerRepository.java
  Repository.CustomerRepository
 Repository/ICustomerService.java
  Repository.ICustomerService
-Config/AppInit.java
- Config.AppInit
 Repository/ICustomerRepository.java
  Repository.ICustomerRepository
 Repository/IGeneralRepository.java
  Repository.IGeneralRepository
-Repository/IGeneralService.java
- Repository.IGeneralService
 Controllers/CustomerController.java
  Controllers.CustomerController
